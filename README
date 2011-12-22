@@ -1,0 +1,5 @@
+GSS framework https://github.com/rikkimax/GSS implementation examples available:
+
+- irc bot
+	- Uses queueing
+	- Login node for comunicating with irc server

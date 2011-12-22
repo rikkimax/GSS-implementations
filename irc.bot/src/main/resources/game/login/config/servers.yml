@@ -1,0 +1,31 @@
+    -
+        type: current
+        other:
+            servers:
+                gss.ircbot.socket.connectors.IrcPlainServerConnection:
+                    #-
+                    #    # host: 127.0.0.1
+                    #    # port: 6667
+                    #    # simpleID: true
+                    #    timeout: 30000
+                    #    bot: fbcbot5
+                    #    bot_id: 0
+                    #    profile: swiftirc_server
+                    #    handler: gss.ircbot.socket.connectors.IrcPlainServerConnectorHandler
+                    -
+                        timeout: 30000
+                        profile: localhost_test_server
+                        bot: bot
+                        bot_id: 0
+                        handler: gss.ircbot.socket.connectors.IrcPlainServerConnectorHandler
+    - # Database server (e.g. mysql)
+        type: database
+        other:
+            hibernate.connection.driver_class: org.hsqldb.jdbcDriver
+            hibernate.connection.url: jdbc:hsqldb:file:{workingDir}/database/database;shutdown=true;hsqldb.write_delay=false;
+            hibernate.connection.username: "SA"
+            hibernate.connection.password: ""
+            hibernate.dialect: org.hibernate.dialect.HSQLDialect
+            hibernate.hbm2ddl.auto: create
+            hibernate.show_sql: false
+            hibernate.current_session_context_class: thread

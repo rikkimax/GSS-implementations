@@ -1,0 +1,7 @@
+Irc bot implementation using GSS framework
+
+In test directory there is an irc server configured for locally hosted irc server on port 6667 (default)
+There is 2 bash/batch scripts (for a cygwin environment with e.g. rm cp on classpath but should work without)
+copy and run
+copy first
+run second

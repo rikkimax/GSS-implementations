@@ -1,0 +1,4 @@
+    -
+        type: current
+        other:
+            min_spare_mem_slot: 30

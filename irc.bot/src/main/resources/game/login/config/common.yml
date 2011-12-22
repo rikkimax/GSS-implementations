@@ -1,0 +1,18 @@
+SerializedClasses:
+    - gss.ircbot.models.IrcServer
+    - gss.ircbot.models.queues.IrcMessageQueue
+    - gss.ircbot.models.queues.UserActionQueue
+    - gss.ircbot.models.BotProfile
+    - gss.ircbot.models.User
+    - gss.ircbot.models.Channel
+    - gss.ircbot.models.UserAuthentication
+    - gss.ircbot.models.KeyStore
+queues:
+    # a.queue(: an.event)
+    gss.ircbot.models.queues.IrcMessageQueue:
+    gss.ircbot.models.queues.UserActionQueue:
+events:
+    gss.ircbot.models.queues.IrcMessageQueue.class:
+        - gss.eventing.UnknownEvent
+    # an.event.trigger<.class>:
+        # - an.event
