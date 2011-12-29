@@ -6,9 +6,13 @@ import javax.persistence.*
 
 @Entity
 class UserActionQueue implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     private User user;
     private IrcServer ircServer;
+    @Enumerated(EnumType.STRING)
     private Action action;
     private Boolean read;
     private Long created;
@@ -30,24 +34,18 @@ class UserActionQueue implements Serializable {
         created = System.currentTimeMillis();
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, nullable = false)
     Long getId() {
         return id;
     }
 
-    @Id
     User getUser() {
         return user;
     }
 
-    @Id
     IrcServer getIrcServer() {
         return ircServer;
     }
 
-    @Enumerated(EnumType.STRING)
     Action getAction() {
         return action;
     }
