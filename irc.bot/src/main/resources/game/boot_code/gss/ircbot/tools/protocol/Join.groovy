@@ -1,6 +1,29 @@
 package gss.ircbot.tools.protocol
 
 class Join {
+    static String getUserName(String text) {
+        String ret = text.substring(1);
+        ret = ret.substring(0, ret.indexOf("!"));
+        return ret;
+    }
+
+    static String getIdent(String text) {
+        String ret = text.substring(text.indexOf("!") + 1);
+        ret = ret.substring(0, ret.indexOf("@"));
+        return ret;
+    }
+
+    static String getHost(String text) {
+        String ret = text.substring(text.indexOf("@") + 1);
+        ret = ret.substring(0, ret.indexOf(" "));
+        return ret;
+    }
+
+    static String getTo(String text) {
+        String ret = text.substring(text.indexOf(" :") + 2);
+        return ret;
+    }
+
     static String createJoinChannel(String channel, String key) {
         return "JOIN ${channel} ${key}";
     }
