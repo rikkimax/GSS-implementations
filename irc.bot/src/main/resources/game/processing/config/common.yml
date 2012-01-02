@@ -1,12 +1,12 @@
 SerializedClasses:
-    - gss.ircbot.models.IrcServer
+    - gss.bot.models.Server
     - gss.ircbot.models.queues.IrcMessageQueue
     - gss.ircbot.models.queues.UserActionQueue
-    - gss.ircbot.models.BotProfile
-    - gss.ircbot.models.User
-    - gss.ircbot.models.Channel
-    - gss.ircbot.models.UserAuthentication
-    - gss.ircbot.models.KeyStore
+    - gss.bot.models.BotProfile
+    - gss.bot.models.User
+    - gss.bot.models.Channel
+    - gss.bot.models.UserAuthentication
+    - gss.bot.models.KeyStore
     - gss.ircbot.models.UserAutoAuthentication
     # - a.Class
 queues:

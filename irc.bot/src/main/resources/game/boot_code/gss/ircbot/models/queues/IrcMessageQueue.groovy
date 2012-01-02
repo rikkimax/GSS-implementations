@@ -1,7 +1,8 @@
 package gss.ircbot.models.queues
 
 import javax.persistence.*
-import gss.ircbot.models.IrcServer
+
+import gss.bot.models.Server
 
 @Entity
 class IrcMessageQueue implements Serializable {
@@ -20,7 +21,7 @@ class IrcMessageQueue implements Serializable {
     private String message;
     private Boolean isNotice;
     @ManyToOne
-    private IrcServer server;
+    private Server server;
 
     IrcMessageQueue() {
     }
@@ -50,11 +51,11 @@ class IrcMessageQueue implements Serializable {
         this.id = id;
     }
 
-    IrcServer getServer() {
+    Server getServer() {
         return server;
     }
 
-    void setServer(IrcServer server) {
+    void setServer(Server server) {
         this.server = server;
     }
 

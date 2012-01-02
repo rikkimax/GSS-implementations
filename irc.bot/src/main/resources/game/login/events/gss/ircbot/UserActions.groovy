@@ -1,8 +1,8 @@
 package gss.ircbot
 
 import gss.eventing.Event
-import gss.ircbot.models.BotProfile
-import gss.ircbot.models.IrcServer
+import gss.bot.models.BotProfile
+import gss.bot.models.Server
 import gss.ircbot.models.queues.IrcMessageQueue
 import gss.ircbot.models.queues.UserActionQueue
 import gss.ircbot.socket.connectors.IrcPlainServerConnection
@@ -36,7 +36,7 @@ class UserActions extends Event {
                     Session dbSession = booter.getSession();
                     if (dbSession != null) {
                         Transaction transaction = dbSession.beginTransaction();
-                        IrcServer ircServer = getIrcServer(server);
+                        Server ircServer = getIrcServer(server);
                         UserActionQueue messageSave = new UserActionQueue(OtherTools.getUser(booter, ircServer, Nick?.getUserName(message)), ircServer, UserActionQueue.Action.PART, message);
                         dbSession.save(messageSave);
                         transaction.commit();
@@ -46,7 +46,7 @@ class UserActions extends Event {
                     Session dbSession = booter.getSession();
                     if (dbSession != null) {
                         Transaction transaction = dbSession.beginTransaction();
-                        IrcServer ircServer = getIrcServer(server);
+                        Server ircServer = getIrcServer(server);
                         UserActionQueue messageSave = new UserActionQueue(OtherTools.getUser(booter, ircServer, Nick?.getUserName(message)), ircServer, UserActionQueue.Action.JOIN, message);
                         dbSession.save(messageSave);
                         transaction.commit();
@@ -56,7 +56,7 @@ class UserActions extends Event {
                     Session dbSession = booter.getSession();
                     if (dbSession != null) {
                         Transaction transaction = dbSession.beginTransaction();
-                        IrcServer ircServer = getIrcServer(server);
+                        Server ircServer = getIrcServer(server);
                         UserActionQueue messageSave = new UserActionQueue(OtherTools.getUser(booter, ircServer, Nick?.getUserName(message)), ircServer, UserActionQueue.Action.QUIT, message);
                         dbSession.save(messageSave);
                         transaction.commit();
@@ -67,7 +67,7 @@ class UserActions extends Event {
                     Session dbSession = booter.getSession();
                     if (dbSession != null) {
                         Transaction transaction = dbSession.beginTransaction();
-                        IrcServer ircServer = getIrcServer(server);
+                        Server ircServer = getIrcServer(server);
                         UserActionQueue messageSave = new UserActionQueue(OtherTools.getUser(booter, ircServer, Nick?.getUserName(message)), ircServer, UserActionQueue.Action.NICK, message);
                         dbSession.save(messageSave);
                         transaction.commit();
@@ -109,7 +109,7 @@ class UserActions extends Event {
         return OtherTools.getBotProfile(booter, serverConnection);
     }
 
-    private IrcServer getIrcServer(IrcPlainServerConnection serverConnection) {
+    private Server getIrcServer(IrcPlainServerConnection serverConnection) {
         return OtherTools.getIrcServer(booter, serverConnection);
     }
 }

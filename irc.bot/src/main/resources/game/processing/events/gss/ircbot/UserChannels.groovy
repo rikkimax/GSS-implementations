@@ -1,8 +1,8 @@
 package gss.ircbot
 
 import gss.eventing.Event
-import gss.ircbot.models.Channel
-import gss.ircbot.models.UserAuthentication
+import gss.bot.models.Channel
+import gss.bot.models.UserAuthentication
 import gss.ircbot.models.queues.UserActionQueue
 import gss.ircbot.tools.protocol.Join
 import gss.ircbot.tools.protocol.Nick

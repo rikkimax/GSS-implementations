@@ -1,14 +1,15 @@
 package gss.ircbot.tools
 
-import gss.ircbot.models.BotProfile
-import gss.ircbot.models.IrcServer
-import gss.ircbot.models.User
-import gss.ircbot.models.UserAuthentication
+import gss.bot.models.BotProfile
+
+import gss.bot.models.User
+import gss.bot.models.UserAuthentication
 import gss.ircbot.socket.connectors.IrcPlainServerConnection
 import gss.run.Booter
 import org.hibernate.Session
 import org.hibernate.Transaction
 import org.hibernate.criterion.Restrictions
+import gss.bot.models.Server
 
 class OtherTools {
     static BotProfile getBotProfile(Booter booter, IrcPlainServerConnection serverConnection) {
@@ -23,24 +24,24 @@ class OtherTools {
         } else if (profile != "") {
             Session session = booter.getSession();
             session.beginTransaction();
-            List list = session.createCriteria(IrcServer).add(Restrictions.eq("name", profile)).list();
-            return ((IrcServer) list.get(0)).getDefaultProfile();
+            List list = session.createCriteria(Server).add(Restrictions.eq("name", profile)).list();
+            return ((Server) list.get(0)).getDefaultProfile();
         }
         return null;
     }
 
-    static IrcServer getIrcServer(Booter booter, IrcPlainServerConnection serverConnection) {
+    static Server getIrcServer(Booter booter, IrcPlainServerConnection serverConnection) {
         String profile = serverConnection.getOtherSettings().get("profile", "");
         if (profile != "") {
             Session session = booter.getSession();
             session.beginTransaction();
-            List list = session.createCriteria(IrcServer).add(Restrictions.eq("name", profile)).list();
-            return (IrcServer) list.get(0);
+            List list = session.createCriteria(Server).add(Restrictions.eq("name", profile)).list();
+            return (Server) list.get(0);
         }
         return null;
     }
 
-    static User getUser(Booter booter, IrcServer ircServer, String nick) {
+    static User getUser(Booter booter, Server ircServer, String nick) {
         Session dbSession = booter.getSession();
         if (dbSession != null) {
             Transaction transaction = dbSession.beginTransaction();

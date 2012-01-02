@@ -1,8 +1,8 @@
 package gss.ircbot
 
 import gss.eventing.Event
-import gss.ircbot.models.BotProfile
-import gss.ircbot.models.IrcServer
+import gss.bot.models.BotProfile
+
 import gss.ircbot.socket.connectors.IrcPlainServerConnection
 import gss.ircbot.tools.OtherTools
 import gss.ircbot.tools.protocol.Join
@@ -18,6 +18,7 @@ import gss.run.LoginNode
 import org.apache.mina.core.session.IoSession
 import org.hibernate.Session
 import org.hibernate.Transaction
+import gss.bot.models.Server
 
 class BaseComunications extends Event {
     BaseComunications() {
@@ -97,7 +98,7 @@ class BaseComunications extends Event {
                 List list = session.createCriteria(BotProfile.class).list();
                 if (list.size() == 0) {
                     BotProfile profile = new BotProfile("bot", 0, "gss irc bot", 0, null, "rikki", "password");
-                    IrcServer server = new IrcServer("localhost_test_server", "localhost", 6667, false, "gss.ircbot.socket.connectors.IrcPlainServerConnectorHandler", profile);
+                    Server server = new Server("localhost_test_server", "localhost", 6667, false, "gss.ircbot.socket.connectors.IrcPlainServerConnectorHandler", profile);
                     session.save(profile);
                     session.save(server);
                     transaction.commit();

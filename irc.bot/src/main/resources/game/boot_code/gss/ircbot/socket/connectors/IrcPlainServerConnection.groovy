@@ -1,6 +1,6 @@
 package gss.ircbot.socket.connectors
 
-import gss.ircbot.models.IrcServer
+import gss.bot.models.Server
 import gss.login.socket.connectors.PlainServerConnection
 import gss.login.socket.connectors.PlainServerConnectionHandler
 import gss.run.LoginNode
@@ -28,9 +28,9 @@ class IrcPlainServerConnection extends PlainServerConnection {
             Session session = loginNode.getSession();
             if (session != null) {
                 session.beginTransaction();
-                List items = session.createCriteria(IrcServer.class).add(Restrictions.eq("name", otherSettings.get("profile"))).list();
+                List items = session.createCriteria(Server.class).add(Restrictions.eq("name", otherSettings.get("profile"))).list();
                 if (items.size() > 0) {
-                    IrcServer server = items.get(0);
+                    Server server = items.get(0);
                     tcp = server.host;
                     port = server.port;
                     simpleID = server.simpleId;

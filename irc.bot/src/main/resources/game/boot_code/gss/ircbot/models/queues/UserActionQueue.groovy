@@ -1,8 +1,8 @@
 package gss.ircbot.models.queues
 
-import gss.ircbot.models.IrcServer
-import gss.ircbot.models.User
+import gss.bot.models.User
 import javax.persistence.*
+import gss.bot.models.Server
 
 @Entity
 class UserActionQueue implements Serializable {
@@ -11,7 +11,7 @@ class UserActionQueue implements Serializable {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     private User user;
-    private IrcServer ircServer;
+    private Server ircServer;
     @Enumerated(EnumType.STRING)
     private Action action;
     private Boolean read;
@@ -25,7 +25,7 @@ class UserActionQueue implements Serializable {
     UserActionQueue() {
     }
 
-    UserActionQueue(User user, IrcServer ircServer, Action action, String raw) {
+    UserActionQueue(User user, Server ircServer, Action action, String raw) {
         this.user = user;
         this.ircServer = ircServer;
         this.action = action;
@@ -42,7 +42,7 @@ class UserActionQueue implements Serializable {
         return user;
     }
 
-    IrcServer getIrcServer() {
+    Server getIrcServer() {
         return ircServer;
     }
 
@@ -62,7 +62,7 @@ class UserActionQueue implements Serializable {
         this.user = user;
     }
 
-    void setIrcServer(IrcServer ircServer) {
+    void setIrcServer(Server ircServer) {
         this.ircServer = ircServer;
     }
 

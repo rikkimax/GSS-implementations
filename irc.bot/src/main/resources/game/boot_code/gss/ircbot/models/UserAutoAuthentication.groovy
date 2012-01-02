@@ -2,13 +2,15 @@ package gss.ircbot.models
 
 import javax.persistence.Entity
 import javax.persistence.Id
+import gss.bot.models.Server
+import gss.bot.models.User
 
 @Entity
 class UserAutoAuthentication implements Serializable {
     @Id
     private User user;
     @Id
-    private IrcServer server;
+    private Server server;
     @Id
     private String nick;
     @Id
@@ -20,7 +22,7 @@ class UserAutoAuthentication implements Serializable {
         super();
     }
 
-    UserAutoAuthentication(User user, IrcServer server, String nick, String ident, String host) {
+    UserAutoAuthentication(User user, Server server, String nick, String ident, String host) {
         this.user = user;
         this.server = server;
         this.nick = nick;
@@ -36,11 +38,11 @@ class UserAutoAuthentication implements Serializable {
         this.user = user;
     }
 
-    IrcServer getServer() {
+    Server getServer() {
         return server;
     }
 
-    void setServer(IrcServer server) {
+    void setServer(Server server) {
         this.server = server;
     }
 

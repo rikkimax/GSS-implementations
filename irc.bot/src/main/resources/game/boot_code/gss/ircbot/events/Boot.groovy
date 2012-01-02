@@ -1,8 +1,8 @@
 package gss.ircbot.events
 
 import gss.eventing.Event
-import gss.ircbot.models.KeyStore
-import gss.ircbot.models.UserAuthentication
+import gss.bot.models.KeyStore
+import gss.bot.models.UserAuthentication
 import gss.run.Booter
 import org.hibernate.Session
 import org.hibernate.Transaction
